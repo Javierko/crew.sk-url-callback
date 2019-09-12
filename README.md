@@ -4,6 +4,7 @@
 Postup
 -------
 **1. Tvorba callbacku**
+
 K Vámi vytvořené bráně vytvořte VIP callback a zde vyplňte vše, jak je na obrázku
 ![Vytvoření callbacku](https://hexlist.hexmania.eu/tutorial.png)
 
