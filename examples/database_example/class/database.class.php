@@ -17,31 +17,32 @@ class Database {
 
     public function stmt_query($query, $binds = [], $binds_type = [], $output = null, $header = null) {
         $param_type = '';
-        $n = count($binds_type);
         
-        for($i = 0; $i < $n; $i++) {
+        $bindsCount = count($binds_type);
+        
+        for($i = 0; $i < $bindsCount; $i++) {
             $param_type .= $binds_type[$i];
         }
         
-        $a_params = array();
-        $a_params[] = & $param_type;
+        $binds_a = [];
+        $binds_a[] = & $param_type;
         
-        for($i = 0; $i < $n; $i++) {
-            $a_params[] = & $binds[$i];
+        for($i = 0; $i < $bindsCount; $i++) {
+            $binds_a[] = & $binds[$i];
         }
 
         $stmt = $this->mysql->prepare($query);
 
-        if($n > 0) {
-            call_user_func_array(array($stmt, 'bind_param'), $a_params);
+        if($bindsCount > 0) {
+            call_user_func_array(array($stmt, 'bind_param'), $binds_a);
         }
 
         if($stmt->execute()) {
-            if($output !== null) {
+            if($output != null) {
                 echo $output;
             }
             
-            if($header !== null) {
+            if($header != null) {
                 header("Location: /".$header);
                 exit();
             }

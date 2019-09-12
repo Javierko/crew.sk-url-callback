@@ -93,11 +93,13 @@ $key = $params['key'];
 $code = $params['code'];
 
 if($key != $expectedKey) {
-    exit("Špatný klíč, akce stornována");
+    exit('Špatný klíč, akce stornována');
 }
 
-# Zde nyní bude Váš kód pro různé akce, viz. složka "examples" (zde na GitHubu)
+# Přidávání do databáze
 
 include 'config.php';
-include 'inc/database.inc.php';
+include 'class/database.class.php';
 
+$database = new Database();
+$database->stmt_query('INSERT INTO test (variable, name) VALUES (?, ?)', [$variables['nick'], $days], ['s', 'i']);
