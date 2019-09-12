@@ -1,5 +1,4 @@
 <?php
-
 # Databáze
 define('DTB_HOST', 'localhost'); # IP / Doména, kde je hostována databáze
 define('DTB_NAME', 'vip'); # Název databáze
