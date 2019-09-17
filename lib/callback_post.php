@@ -11,8 +11,8 @@ $params = [
 ];
 
 foreach($params as $param) {
-    if(isset($_GET[$param])) {
-        $params[$param] = $_GET[$param];
+    if(isset($_POST[$param])) {
+        $params[$param] = $_POST[$param];
     }
 }
 
